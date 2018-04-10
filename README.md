@@ -4,4 +4,4 @@ and polished.
 
 ## The list of projects in this repository:
 
-* **kaggle-seedlings**: My code for the plant seedlings image classification challenge from Kaggle.
+* **kaggle-seedlings**: My code for the plant seedlings image classification challenge from Kaggle. It as a result of me learning how to use the Keras library for image classification tasks.
