@@ -1,7 +1,8 @@
 This is my code for the Kaggle plant seedlings classification challenge,
 see https://www.kaggle.com/c/plant-seedlings-classification
 
-The part of the code that controls the training of the neural networks is in the train_on_seedlings.py file.
+The part of the code that controls the training of the neural networks is in the train_on_seedlings.py file. Run it using
+`python3 train_on_seedlings.py`
 
 My approach is to use Keras and re-train several pre-defined networks from Keras applications. There is more code than would
 be strictly needed to get the results, because my aim was to write code that can be easily reused for other image classification
