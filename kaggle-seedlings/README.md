@@ -5,7 +5,9 @@ three separate networks. Curiously, one of the three networks performs
 slightly better on its own (customized Xception with 0.988 accuracy).
 
 The part of the code that controls the training of the neural networks is in the train_on_seedlings.py file. Run it using
-`python3 train_on_seedlings.py`
+`python3 train_on_seedlings.py`. The cod that evaluates all the three models and also calculates average predictions over
+the ensemble of all three models is in `ensemble-predict.py`. If run, it evaluates both training and validation accuracy
+from the models and prints the results.
 
 My approach is to use Keras and re-train several pre-defined networks from Keras applications. There is more code than would
 be strictly needed to get the results, because my aim was to write code that can be easily reused for other image classification
