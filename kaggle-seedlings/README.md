@@ -1,5 +1,8 @@
 This is my code for the Kaggle plant seedlings classification challenge,
-see https://www.kaggle.com/c/plant-seedlings-classification
+see https://www.kaggle.com/c/plant-seedlings-classification . I get around
+0.987 accuracy on the validation data set by averaging predictions from
+three separate networks. Curiously, one of the three networks performs
+slightly better on its own (Xception with 0.988 accuracy).
 
 The part of the code that controls the training of the neural networks is in the train_on_seedlings.py file. Run it using
 `python3 train_on_seedlings.py`
