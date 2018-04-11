@@ -69,7 +69,7 @@ yind_valid = [np.argmax(pp) for pp in y_valid]
 predind_train = [np.argmax(pp) for pp in avg_train]
 predind_train_all = [[np.argmax(pp) for pp in preds0]
                      for preds0 in preds_train]
-predind_valid = [np.argmax(pp) for pp in avg_train]
+predind_valid = [np.argmax(pp) for pp in avg_valid]
 predind_valid_all = [[np.argmax(pp) for pp in preds0]
                      for preds0 in preds_valid]
 
