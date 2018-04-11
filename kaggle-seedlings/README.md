@@ -1,6 +1,6 @@
 This is my code for the Kaggle plant seedlings classification challenge,
-see https://www.kaggle.com/c/plant-seedlings-classification . I get around
-0.987 accuracy on the validation data set by averaging predictions from
+see https://www.kaggle.com/c/plant-seedlings-classification . I get
+0.987 accuracy score on the validation dataset by averaging predictions from
 three separate networks. Curiously, one of the three networks performs
 slightly better on its own (Xception with 0.988 accuracy).
 
