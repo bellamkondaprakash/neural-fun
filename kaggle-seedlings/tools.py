@@ -131,7 +131,7 @@ def train_custom_model(model, train_dir, valid_dir,
     try:
         model.load_weights(weights, by_name=False)
     except:
-        print("Weight file {} could not be loaded. Using model's default weights.")
+        print("Weight file {} could not be loaded. Using model's default weights.".format(weights))
 
     print("Training in {} phases...".format(len(protocol)))
     for i, phase in enumerate(protocol):

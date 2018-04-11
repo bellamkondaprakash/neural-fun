@@ -30,9 +30,9 @@ num_categories = 12
 batch_size = 12
 
 train_protocol = [(20, True, Adadelta()),
-                  (20, False, Adadelta()),
-                  (10, False, SGD(lr=0.01, momentum=0.5)),
-                  (20, False, SGD(lr=0.001, momentum=0.1)),
+                  (30, False, Adadelta()),
+                  (20, False, SGD(lr=0.01, momentum=0.5)),
+                  (30, False, SGD(lr=0.001, momentum=0.1)),
                   (20, False, SGD(lr=0.0001, momentum=0.01))]
 
 
@@ -40,27 +40,27 @@ input_layer = keras.layers.Input(shape=(*imsize, 3), name='input_layer')
 
 if train_inception:
     model_inception = models.custom_inception(input_layer, num_categories,
-                                              weights='weights/weights_inception.hdf5')
+                                              weights='weights/weights_inception_fc2.hdf5', fc=2)
 
     tools.train_custom_model(model_inception, train_dir, valid_dir,
                              protocol=train_protocol, imsize=imsize,
-                             weights='weights/weights_inception.hdf5',
+                             weights='weights/weights_inception_fc2.hdf5',
                              batchsize=batch_size)
 
 if train_xception:
     model_xception = models.custom_xception(input_layer, num_categories,
-                                            weights='weights/weights_xception.hdf5')
+                                            weights='weights/weights_xception_fc2.hdf5', fc=2)
 
     tools.train_custom_model(model_xception, train_dir, valid_dir,
                              protocol=train_protocol, imsize=imsize,
-                             weights='weights/weights_xception.hdf5',
+                             weights='weights/weights_xception_fc2.hdf5',
                              batchsize=batch_size)
 
 if train_densenet:
     model_dn121 = models.custom_dn121(input_layer, num_categories,
-                                          weights='weights/weights_dn121.hdf5')
+                                      weights='weights/weights_dn121_fc2.hdf5', fc=2)
 
     tools.train_custom_model(model_dn121, train_dir, valid_dir,
-                             qprotocol=train_protocol, imsize=imsize,
-                             weights='weights/weights_dn121.hdf5',
+                             protocol=train_protocol, imsize=imsize,
+                             weights='weights/weights_dn121_fc2.hdf5',
                              batchsize=batch_size)

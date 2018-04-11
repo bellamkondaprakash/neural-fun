@@ -5,7 +5,7 @@ from keras.applications import inception_v3, xception, vgg19, vgg16, densenet, n
 import tools
 
 
-def custom_inception(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD()):
+def custom_inception(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD(), fc=0):
     model_base = inception_v3.InceptionV3(include_top=False, input_tensor=input_tensor,
                                           weights='imagenet', pooling='avg')
 
@@ -15,13 +15,16 @@ def custom_inception(input_tensor, num_classes, weights=None, optimizer=keras.op
 
     inp_tensor = model_base.input
     x = model_base.output
+    for i in range(fc):
+        x = Dense(256, activation='relu', name='top_dense'+str(i)+'_inc')(x)
+        x = Dropout(0.3)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_inc')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)
     try:
         model.load_weights(weights, by_name=False)
     except:
-        print("Weight file {} could not be loaded. Using ImageNet weights.")
+        print("Weight file {} could not be loaded. Using ImageNet weights.".format(weights))
 
     model.preprocessor = inception_v3.preprocess_input
 
@@ -32,7 +35,7 @@ def custom_inception(input_tensor, num_classes, weights=None, optimizer=keras.op
     return model
 
 
-def custom_xception(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD()):
+def custom_xception(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD(), fc=0):
     model_base = xception.Xception(include_top=False, input_tensor=input_tensor,
                                    weights='imagenet', pooling='avg')
 
@@ -42,13 +45,16 @@ def custom_xception(input_tensor, num_classes, weights=None, optimizer=keras.opt
 
     inp_tensor = model_base.input
     x = model_base.output
+    for i in range(fc):
+        x = Dense(256, activation='relu', name='top_dense'+str(i)+'_xc')(x)
+        x = Dropout(0.3)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_xc')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)
     try:
         model.load_weights(weights, by_name=False)
     except:
-        print("Weight file {} could not be loaded. Using ImageNet weights.")
+        print("Weight file {} could not be loaded. Using ImageNet weights.".format(weights))
 
     model.preprocessor = xception.preprocess_input
 
@@ -59,7 +65,7 @@ def custom_xception(input_tensor, num_classes, weights=None, optimizer=keras.opt
     return model
 
 
-def custom_dn121(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD()):
+def custom_dn121(input_tensor, num_classes, weights=None, optimizer=keras.optimizers.SGD(), fc=0):
     model_base = densenet.DenseNet121(include_top=False, input_tensor=input_tensor,
                                       weights='imagenet', pooling='avg')
 
@@ -69,13 +75,16 @@ def custom_dn121(input_tensor, num_classes, weights=None, optimizer=keras.optimi
 
     inp_tensor = model_base.input
     x = model_base.output
+    for i in range(fc):
+        x = Dense(256, activation='relu', name='top_dense'+str(i)+'_dn121')(x)
+        x = Dropout(0.3)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_dn121')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)
     try:
         model.load_weights(weights, by_name=False)
     except:
-        print("Weight file {} could not be loaded. Using ImageNet weights.")
+        print("Weight file {} could not be loaded. Using ImageNet weights.".format(weights))
 
     model.preprocessor = densenet.preprocess_input
 
