@@ -17,7 +17,7 @@ def custom_inception(input_tensor, num_classes, weights=None, optimizer=keras.op
     x = model_base.output
     for i in range(fc):
         x = Dense(256, activation='relu', name='top_dense'+str(i)+'_inc')(x)
-        x = Dropout(0.3)(x)
+        x = Dropout(0.1)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_inc')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)
@@ -47,7 +47,7 @@ def custom_xception(input_tensor, num_classes, weights=None, optimizer=keras.opt
     x = model_base.output
     for i in range(fc):
         x = Dense(256, activation='relu', name='top_dense'+str(i)+'_xc')(x)
-        x = Dropout(0.3)(x)
+        x = Dropout(0.1)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_xc')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)
@@ -77,7 +77,7 @@ def custom_dn121(input_tensor, num_classes, weights=None, optimizer=keras.optimi
     x = model_base.output
     for i in range(fc):
         x = Dense(256, activation='relu', name='top_dense'+str(i)+'_dn121')(x)
-        x = Dropout(0.3)(x)
+        x = Dropout(0.1)(x)
     x = Dense(num_classes, activation='softmax', name='top_predictions_dn121')(x)
 
     model = keras.Model(inputs=inp_tensor, outputs=x)

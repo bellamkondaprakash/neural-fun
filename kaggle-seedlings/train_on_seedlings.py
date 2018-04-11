@@ -21,19 +21,18 @@ train_dir = root_dir + '/train'
 valid_dir = root_dir + '/valid1'
 
 
-train_inception = False
-train_xception = False
+train_inception = True
+train_xception = True
 train_densenet = True
 
 imsize = (224, 224)
 num_categories = 12
-batch_size = 12
+batch_size = 8
 
-train_protocol = [(20, True, Adadelta()),
-                  (30, False, Adadelta()),
-                  (20, False, SGD(lr=0.01, momentum=0.5)),
-                  (30, False, SGD(lr=0.001, momentum=0.1)),
-                  (20, False, SGD(lr=0.0001, momentum=0.01))]
+train_protocol = [(100, False, SGD(lr=0.01, momentum=0.5)),
+                  (100, False, SGD(lr=0.001, momentum=0.5)),
+                  (100, False, SGD(lr=0.0001, momentum=0.5)),
+                  (50, True, SGD(lr=0.0001, momentum=0.5))]
 
 
 input_layer = keras.layers.Input(shape=(*imsize, 3), name='input_layer')
@@ -46,7 +45,8 @@ if train_inception:
                              protocol=train_protocol, imsize=imsize,
                              weights='weights/weights_inception_fc2.hdf5',
                              batchsize=batch_size)
-
+    del model_inception
+    
 if train_xception:
     model_xception = models.custom_xception(input_layer, num_categories,
                                             weights='weights/weights_xception_fc2.hdf5', fc=2)
@@ -55,6 +55,7 @@ if train_xception:
                              protocol=train_protocol, imsize=imsize,
                              weights='weights/weights_xception_fc2.hdf5',
                              batchsize=batch_size)
+    del model_xception
 
 if train_densenet:
     model_dn121 = models.custom_dn121(input_layer, num_categories,
@@ -64,3 +65,4 @@ if train_densenet:
                              protocol=train_protocol, imsize=imsize,
                              weights='weights/weights_dn121_fc2.hdf5',
                              batchsize=batch_size)
+    del model_dn121
