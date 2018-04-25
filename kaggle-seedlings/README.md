@@ -20,3 +20,9 @@ versions of the libraries.
 Unfortunately the training dataset is not included in this repository. You must download it yourself from the Kaggle page and
 place it in the data/ folder. splitvalid.py file can be used to then split the data into training and validation data. For this
 task, I chose not to have separate testing data because the seedlings dataset was already pretty small (only 4750 images).
+
+
+TODO in the future to improve the results:
+* Train different variations of Xception (by varying dropouts, number of fully connected layers, etc.) and make an ensemble prediction using them
+* Mask out non-essential parts of the pictures (should be easy since the relevant part is just green)
+* Experiment with new nets and regularization schemes
