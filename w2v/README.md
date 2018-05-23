@@ -17,5 +17,5 @@ slightly modified skip-gram algorithm. This can hopefully be used to find replac
 ingredients in recipes.
 
 TODO in the future:
--Add the recipe ingredient embeddings code.
--Generalize the batch generator for other algorithms (like Bag-of-Words).
+* Add the recipe ingredient embeddings code.
+* Generalize the batch generator for other algorithms (like Bag-of-Words).
