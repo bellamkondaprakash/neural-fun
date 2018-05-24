@@ -20,13 +20,11 @@ class DataContainer:
     def closest_to(self, word):
         dists = distance_to(self.embedding_matrix, self.dictionary[word])
         return [self.inverse_dictionary[ind] for ind in np.argsort(dists)]
-    
+
     def closest_to_vector(self, vector):
         dists = np.asarray([np.linalg.norm(vector-self.embedding_matrix[ind2])
                             for ind2 in range(len(self.embedding_matrix))])
         return np.argsort(dists)
-
-    
 
 
 def words2ids(data, maxwords=100000, unknown_token=None):
@@ -59,11 +57,13 @@ def words2ids(data, maxwords=100000, unknown_token=None):
 def distance_to(embeddings, index):
     return np.asarray([np.linalg.norm(embeddings[index]-embeddings[ind2]) for ind2 in range(len(embeddings))])
 
+
 def closest_to(embeddings, word, dictionary, inverse_dictionary):
     dists = distance_to(embeddings, dictionary[word])
     return [inverse_dictionary[ind] for ind in np.argsort(dists)]
-    
-    
+
+
 def closest_to_vector(embeddings, vector):
-    dists = np.asarray([np.linalg.norm(vector-embeddings[ind2]) for ind2 in range(len(embeddings))])
+    dists = np.asarray([np.linalg.norm(vector-embeddings[ind2])
+                        for ind2 in range(len(embeddings))])
     return np.argsort(dists)
