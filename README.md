@@ -1,6 +1,9 @@
-This repository includes some simple projects I have (sort of) completed while learning about neural networks. So far
-it includes only one project, but I plan to add more later when I get around to making more of my codes somewhat completed
-and polished.
+This repository includes some simple projects I have had the momentum to get into nice enough shape to share with other
+people while learning about neural networks and machine learning. So far it includes two projects, both of which I will
+hopefully still improve. More will be coming soon(ish).
+
+I have attempted to write the projects with some concern to readibility and "niceness" of the code (although documentation
+and comments might be lacking in some cases), which hopefully makes them accessible to whoever wishes to study them.
 
 ## The list of projects in this repository:
 
